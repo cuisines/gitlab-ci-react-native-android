@@ -1,0 +1,12 @@
+stages:
+  - build
+  - push
+build:
+  stage: build
+  script:
+    - docker build -t webcuisine/gitlab-ci-react-native-android .
+push:
+  stage: push
+  script:
+    - docker push webcuisine/gitlab-ci-react-native-android
+
