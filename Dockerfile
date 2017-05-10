@@ -8,6 +8,8 @@
 FROM jangrewe/gitlab-ci-android
 MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
+ENV FASTLANE_VERSION=2.29.0
+
 RUN curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
@@ -15,3 +17,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
 RUN apt-get update && apt-get install git yarn nodejs build-essential -qqy --no-install-recommends
+
+RUN apt-get install ruby ruby-dev -qqy --no-install-recommends
+
+RUN gem install fastlane:$FASTLANE_VERSION -NV
