@@ -20,4 +20,4 @@ RUN apt-get update && apt-get install git yarn nodejs build-essential -qqy --no-
 
 RUN apt-get install ruby ruby-dev -qqy --no-install-recommends
 
-RUN gem install fastlane:$FASTLANE_VERSION -NV
+RUN gem install fastlane -NV
