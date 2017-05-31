@@ -23,3 +23,12 @@ build:
     paths:
     - android/app/build/outputs/apk/
 ```
+
+
+## Detached testing
+```
+	docker run -it -d webcuisine/gitlab-ci-react-native-android /bin/bash
+	docker attach HASH
+	docker stop 3c854ac65f64d424c097e639c002b50431454e839b5c551ec2a929dcbecb7176
+	
+````

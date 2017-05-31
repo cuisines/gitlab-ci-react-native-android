@@ -8,31 +8,29 @@
 FROM jangrewe/gitlab-ci-android
 MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
-ENV FASTLANE_VERSION=2.29.0
+RUN echo "Installing Yarn Deb Source" \
+	&& curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+	&& echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "Installing Node.JS" \
+	&& curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+ENV BUILD_PACKAGES git yarn nodejs build-essential imagemagick ruby ruby-dev wget libcurl4-openssl-dev
+RUN echo "Installing Additional Libraries" \
+	 && rm -rf /var/lib/gems \
+	 && apt-get update && apt-get install $BUILD_PACKAGES -qqy --no-install-recommends
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-
-RUN apt-get update && apt-get install git yarn nodejs build-essential -qqy --no-install-recommends
-
-RUN apt-get install ruby ruby-dev -qqy --no-install-recommends
-
-RUN gem install fastlane -NV
+RUN echo "Installing Fastlane" \
+	&& gem install fastlane badge -N \
+	&& gem cleanup
 
 ENV GRADLE_HOME /opt/gradle
 ENV GRADLE_VERSION 3.3
-ARG GRADLE_DOWNLOAD_SHA256=0b7450798c190ff76b9f9a3d02e18b33d94553f708ebc08ebe09bdf99111d110
 
-RUN apt-get -qq update && apt-get install -qqy --no-install-recommends wget
+RUN echo "Downloading Gradle" \
+	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
 
-RUN set -o errexit -o nounset \
-	&& echo "Downloading Gradle" \
-	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
-	\
-	&& echo "Installing Gradle" \
+RUN echo "Installing Gradle" \
 	&& unzip gradle.zip \
 	&& rm gradle.zip \
 	&& mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
