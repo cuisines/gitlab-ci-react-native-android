@@ -20,7 +20,7 @@ RUN echo "Installing Additional Libraries" \
 	 && rm -rf /var/lib/gems \
 	 && apt-get update && apt-get install $BUILD_PACKAGES -qqy --no-install-recommends
 
-RUN echo "Installing Fastlane" \
+RUN echo "Installing Fastlane 2.50.0" \
 	&& gem install fastlane badge -N \
 	&& gem cleanup
 
