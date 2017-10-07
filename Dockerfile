@@ -15,12 +15,13 @@ RUN echo "Installing Yarn Deb Source" \
 RUN echo "Installing Node.JS" \
 	&& curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
-ENV BUILD_PACKAGES git yarn nodejs build-essential imagemagick ruby ruby-dev wget libcurl4-openssl-dev
+ENV BUILD_PACKAGES git yarn nodejs build-essential imagemagick librsvg2-bin ruby ruby-dev wget libcurl4-openssl-dev
 RUN echo "Installing Additional Libraries" \
 	 && rm -rf /var/lib/gems \
 	 && apt-get update && apt-get install $BUILD_PACKAGES -qqy --no-install-recommends
 
-RUN echo "Installing Fastlane 2.59.0" \
+
+RUN echo "Installing Fastlane 2.60.1" \
 	&& gem install fastlane badge -N \
 	&& gem cleanup
 
