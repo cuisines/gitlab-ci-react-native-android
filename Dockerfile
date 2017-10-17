@@ -8,7 +8,7 @@
 FROM ubuntu:17.04
 MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
-RUN echo "Android SDK 26.0.1"
+RUN echo "Android SDK 26.0.2"
 ENV VERSION_SDK_TOOLS "3859397"
 
 ENV ANDROID_HOME "/sdk"

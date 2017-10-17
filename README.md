@@ -1,5 +1,5 @@
 # gitlab-ci-react-native-android
-## Fastlane 2.60.1 
+## Android 26.0.1 and Fastlane 2.61.0 
 This Docker image contains react-native and the Android SDK and most common packages necessary for building Android apps in a CI tool like GitLab CI. 
 
 A `.gitlab-ci.yml` with caching of your project's dependencies would look like this:
@@ -27,6 +27,11 @@ build:
 
 
 ## Detached testing
+Build locally
+```
+docker build -t webcuisine/gitlab-ci-react-native-android:android-26.0.1 .
+```
+or run from remote
 ```
 	docker run -it -d webcuisine/gitlab-ci-react-native-android /bin/bash
 	docker attach HASH
