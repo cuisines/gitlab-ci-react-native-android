@@ -54,7 +54,7 @@ RUN echo "Installing Yarn Deb Source" \
 	&& echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN echo "Installing Node.JS" \
-	&& curl -sL https://deb.nodesource.com/setup_8.x | bash -
+	&& curl -sL https://deb.nodesource.com/setup_9.x | bash -
 
 ENV BUILD_PACKAGES git yarn nodejs build-essential imagemagick librsvg2-bin ruby ruby-dev wget libcurl4-openssl-dev
 RUN echo "Installing Additional Libraries" \
