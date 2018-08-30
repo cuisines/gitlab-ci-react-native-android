@@ -5,7 +5,7 @@
 # https://github.com/cuisines/gitlab-ci-react-native-android
 #
 
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
 RUN echo "Android SDK 26.0.2"
