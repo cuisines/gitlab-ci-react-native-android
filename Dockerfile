@@ -27,6 +27,7 @@ RUN apt-get -qq update && \
       lib32gcc1 \
       lib32ncurses5 \
       lib32z1 \
+      gnupg2 \
       unzip \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
