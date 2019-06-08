@@ -5,11 +5,11 @@
 # https://github.com/cuisines/gitlab-ci-react-native-android
 #
 
-FROM ubuntu:17.10
+FROM ubuntu:18.10
 MAINTAINER Sascha-Matthias Kulawik <sascha@kulawik.de>
 
-RUN echo "Android SDK 26.0.2"
-ENV VERSION_SDK_TOOLS "3859397"
+RUN echo "Android SDK 26.1.1"
+ENV VERSION_SDK_TOOLS "4333796"
 
 ENV ANDROID_HOME "/sdk"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
@@ -25,7 +25,7 @@ RUN apt-get -qq update && \
       libc6-i386 \
       lib32stdc++6 \
       lib32gcc1 \
-      lib32ncurses5 \
+      # lib32ncurses5 \
       lib32z1 \
       gnupg2 \
       unzip \
