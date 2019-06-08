@@ -48,7 +48,7 @@ RUN mkdir -p /root/.android && \
   ${ANDROID_HOME}/tools/bin/sdkmanager --update 
 
 RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
-    ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
+    yes | ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
 
 RUN echo "Installing Yarn Deb Source" \
 	&& curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
