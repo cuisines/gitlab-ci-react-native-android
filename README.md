@@ -19,7 +19,9 @@ build:
   stage: build
   script:
   - yarn
-  - cd android && ./gradlew assembleDebug
+  - cd android
+  - chmod +x ./gradlew
+  - ./gradlew assembleDebug
   artifacts:
     paths:
     - android/app/build/outputs/apk/
