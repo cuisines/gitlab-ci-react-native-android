@@ -51,7 +51,7 @@ RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/pac
     yes | ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
 
 RUN echo "Installing Yarn Deb Source" \
-	&& curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+	&& curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 	&& echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN echo "Installing Node.JS" \
