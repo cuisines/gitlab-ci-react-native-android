@@ -67,7 +67,7 @@ RUN echo "Installing Fastlane 2.61.0" \
 	&& gem cleanup
 
 ENV GRADLE_HOME /opt/gradle
-ENV GRADLE_VERSION 3.3
+ENV GRADLE_VERSION 5.6.3
 
 RUN echo "Downloading Gradle" \
 	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
