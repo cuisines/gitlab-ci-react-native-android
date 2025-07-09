@@ -28,6 +28,15 @@ build:
 ```
 or like this [example with fastlane](./exampleWithFastlane.md)
 
+## Automated Docker Hub Publishing
+
+This repository uses GitHub Actions to automatically build and push the Docker image to Docker Hub whenever changes are made. The image is available at:
+
+- **Latest**: `webcuisine/gitlab-ci-react-native-android:latest`
+- **Versioned**: `webcuisine/gitlab-ci-react-native-android:android-28.0.3`
+
+See [GITHUB_ACTIONS_SETUP.md](./GITHUB_ACTIONS_SETUP.md) for setup instructions.
+
 ## Detached testing
 Build locally
 ```
