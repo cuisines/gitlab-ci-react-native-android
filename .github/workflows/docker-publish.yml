@@ -53,6 +53,7 @@ jobs:
         
     - name: Update Docker Hub description
       if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+      continue-on-error: true
       uses: peter-evans/dockerhub-description@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
