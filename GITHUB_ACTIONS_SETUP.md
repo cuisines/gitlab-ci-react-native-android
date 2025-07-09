@@ -46,7 +46,14 @@ The workflow will automatically create the following tags:
 - `android-34.0.0` (version tag)
 - Branch-specific tags for development
 
-### 4. Manual Trigger
+### 4. GitHub Releases
+
+The workflow automatically creates GitHub releases when building from the `develop` branch:
+- **Release Tag Format**: `v2025.01.09-android-34.0.0` (date + Android version)
+- **Release Notes**: Include complete documentation of what's included in the image
+- **Links**: Direct links to Docker Hub and usage instructions
+
+### 5. Manual Trigger
 
 You can manually trigger the workflow:
 1. Go to **Actions** tab in your repository

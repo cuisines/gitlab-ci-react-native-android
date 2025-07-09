@@ -59,4 +59,51 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ env.DOCKER_IMAGE }}
-        readme-filepath: ./README.md 
+        readme-filepath: ./README.md
+        
+    - name: Generate release tag
+      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+      id: tag
+      run: |
+        # Generate a version tag based on date and commit
+        TAG="v$(date +'%Y.%m.%d')-${{ env.TAG_VERSION }}"
+        echo "tag=$TAG" >> $GITHUB_OUTPUT
+        echo "Generated tag: $TAG"
+        
+    - name: Create GitHub Release
+      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Create release using GitHub CLI
+        gh release create ${{ steps.tag.outputs.tag }} \
+          --title "Docker Image ${{ steps.tag.outputs.tag }}" \
+          --notes "## 🐳 Docker Image Release
+
+        **Docker Image**: \`${{ env.DOCKER_IMAGE }}:latest\`
+        **Version Tag**: \`${{ env.DOCKER_IMAGE }}:${{ env.TAG_VERSION }}\`
+
+        ### 📦 What's Included
+        - Ubuntu 22.04 LTS
+        - Android SDK 34.0.0 with command line tools
+        - Java 17 (OpenJDK)
+        - Node.js 18 LTS
+        - Gradle 8.5
+        - Yarn latest
+        - Fastlane latest
+
+        ### 🚀 Usage
+        \`\`\`bash
+        # Use in GitLab CI
+        image: ${{ env.DOCKER_IMAGE }}:latest
+
+        # Or use the version tag
+        image: ${{ env.DOCKER_IMAGE }}:${{ env.TAG_VERSION }}
+        \`\`\`
+
+        ### 🔗 Links
+        - [Docker Hub Repository](https://hub.docker.com/r/${{ env.DOCKER_IMAGE }})
+        - [GitHub Repository](https://github.com/${{ github.repository }})
+
+        **Commit**: ${{ github.sha }}
+        **Build Date**: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" 
