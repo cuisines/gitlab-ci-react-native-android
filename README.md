@@ -1,6 +1,15 @@
 # gitlab-ci-react-native-android
-## Android 28.0.3 and Fastlane 2.61.0 
+## Android 34.0.0, Java 17, Node.js 18 LTS, Gradle 8.5, and Latest Fastlane
 This Docker image contains react-native and the Android SDK and most common packages necessary for building Android apps in a CI tool like GitLab CI. 
+
+**Updated for 2024:**
+- Ubuntu 22.04 LTS
+- Android SDK 34.0.0 with command line tools
+- Java 17 (OpenJDK)
+- Node.js 18 LTS
+- Gradle 8.5
+- Yarn latest
+- Fastlane latest 
 
 A `.gitlab-ci.yml` with caching of your project's dependencies would look like this:
 
@@ -33,14 +42,14 @@ or like this [example with fastlane](./exampleWithFastlane.md)
 This repository uses GitHub Actions to automatically build and push the Docker image to Docker Hub whenever changes are made. The image is available at:
 
 - **Latest**: `webcuisine/gitlab-ci-react-native-android:latest`
-- **Versioned**: `webcuisine/gitlab-ci-react-native-android:android-28.0.3`
+- **Versioned**: `webcuisine/gitlab-ci-react-native-android:android-34.0.0`
 
 See [GITHUB_ACTIONS_SETUP.md](./GITHUB_ACTIONS_SETUP.md) for setup instructions.
 
 ## Detached testing
 Build locally
 ```
-docker build -t webcuisine/gitlab-ci-react-native-android:android-28.0.3 .
+docker build -t webcuisine/gitlab-ci-react-native-android:android-34.0.0 .
 ```
 or run from remote
 ```

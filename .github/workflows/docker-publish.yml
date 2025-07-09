@@ -9,7 +9,7 @@ on:
 
 env:
   DOCKER_IMAGE: webcuisine/gitlab-ci-react-native-android
-  TAG_VERSION: android-28.0.3
+  TAG_VERSION: android-34.0.0
 
 jobs:
   build-and-push:

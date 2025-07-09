@@ -43,7 +43,7 @@ The workflow is configured to run:
 
 The workflow will automatically create the following tags:
 - `latest` (only for the default branch)
-- `android-28.0.3` (version tag)
+- `android-34.0.0` (version tag)
 - Branch-specific tags for development
 
 ### 4. Manual Trigger
